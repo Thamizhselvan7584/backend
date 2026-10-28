@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch_Single_Product</title>
+</head>
+
+<body>
+    <div id="showingdata">
+
+    </div>
+    <script>
+
+        const showingdata = document.getElementById("showingdata")
+        const fetchdata = async () => {
+            try {
+                const data = await fetch("https://dummyjson.com/products/1");
+                const maindata = await data.json();
+                const product = maindata;
+                let mydata = `
+        <p>Title: ${product.title}</p>
+        <p>Price: ${product.price}</p>
+        <p>Category: ${product.category}</p>`
+
+                showingdata.innerHTML = mydata;
+
+            } catch (error) {
+                console.log("Error:", error.message);
+            }
+        }
+
+        fetchdata();
+    </script>
+</body>
+
+</html>
